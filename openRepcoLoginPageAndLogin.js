@@ -17,8 +17,15 @@ async function simpleTest(){
 	await page.goto('https://repco.xyz', {
     		waitUntil: 'networkidle2'
 	});
-
+	
 	await page.screenshot({path: '/Users/mb/projects/puppeteer/repco.png'}); // снятие скриншота
+	const loginLink = await page.$('a[href="/sign_in"]');
+	if (loginLink)
+	{
+        	await loginLink.click();
+	}
+	await page.waitFor(2000);
+	//wait for navigation?
 	//ширина и высота окна
 	//меню
 	//открыть форму регистрации
